@@ -20,7 +20,7 @@ pip install h2
 
 Execute the Proof of Concept:
 ```shell
-python3 poc.py
+python3 cflood.py
 ```
 
 ## Affected CVEs
