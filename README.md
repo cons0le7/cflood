@@ -10,7 +10,7 @@ This vulnerability can lead to different consequences for vulnerable web servers
 (more details in [the blog post of nowotarski](
 https://nowotarski.info/http2-continuation-flood-technical-details/))
 
-This is a modified version forked from the original which no longer contains the vulnerable go server, instead the script allows you to input a target host. This is strictly intended for educational purposes with the intent of offering more flexibility to test this POC in a home lab or professional setting. USING THIS AGAINST ANY TARGET WITHOUT PERMISSION IS HIGHLY UNETHICAL AND ILLEGAL. I am not reponsible for any use or misuse of this tool. 
+**This is a modified version forked from the original which no longer contains the vulnerable go server, instead the script allows you to input a target host. This is strictly intended for educational purposes with the intent of offering more flexibility to test this POC in a home lab or professional setting. USING THIS AGAINST ANY TARGET WITHOUT PERMISSION IS HIGHLY UNETHICAL AND ILLEGAL. I am not reponsible for any use or misuse of this tool. **
 
 
 Install the required prerequisites:
