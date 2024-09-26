@@ -20,6 +20,7 @@ pip install h2
 
 Execute the Proof of Concept:
 ```shell
+cd cflood
 python3 cflood.py
 ```
 
