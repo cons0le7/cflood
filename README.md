@@ -10,15 +10,8 @@ This vulnerability can lead to different consequences for vulnerable web servers
 (more details in [the blog post of nowotarski](
 https://nowotarski.info/http2-continuation-flood-technical-details/))
 
-The vulnerable go server in this PoC leads to CPU exhaustion. 
+This is a modified version forked from the original which no longer contains the vulnerable go server, instead the script allows you to input a target host. This is strictly intended for educational purposes with the intent of offering more flexibility to test this POC in a home lab or professional setting. USING THIS AGAINST ANY TARGET WITHOUT PERMISSION IS HIGHLY UNETHICAL AND ILLEGAL. I am not reponsible for any use or misuse of this tool. 
 
-## Usage
-Start the vulnerable go server:
-```shell
-cd vulnerable-go-server
-docker build -t vulnerable-go-server .
-docker run -p 8000:8000 -d vulnerable-go-server 
-```
 
 Install the required prerequisites:
 ```shell
