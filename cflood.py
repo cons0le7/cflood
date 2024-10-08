@@ -39,7 +39,7 @@ _/ ___\   __\|  |  /  _ \ /  _ \ / __ |
      \/                              \/ 
 
 """))
-host = input(color_red("Enter target IP address or domain name: "))
+target = input(color_red("Enter target IP address or domain name: "))
 port = int(input(color_red("Enter port: ")))
 
-continuation_flood(host, port)
+continuation_flood(target, port)
