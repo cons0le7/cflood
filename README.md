@@ -1,3 +1,9 @@
+
+**This is a modified version forked from the original which no longer contains the vulnerable go server, instead the script allows you to input a target host. This is strictly intended for educational purposes with the intent of offering more flexibility to test this POC in a home lab or professional setting. USING THIS AGAINST ANY TARGET WITHOUT PERMISSION IS HIGHLY UNETHICAL AND ILLEGAL. I am not reponsible for any use or misuse of this tool. **
+
+-Now includes a tool to check if servers are HTTP/2 capable.-
+
+
 # PoC: HTTP/2 CONTINUATION Flood Vulnerability
 This is a proof of concept for the HTTP/2 CONTINUATION flood vulnerability published by 
 [nowotarski.info](https://nowotarski.info/) on April 03, 2024.  
@@ -11,10 +17,6 @@ This vulnerability can lead to different consequences for vulnerable web servers
 https://nowotarski.info/http2-continuation-flood-technical-details/))
 
 
-**This is a modified version forked from the original which no longer contains the vulnerable go server, instead the script allows you to input a target host. This is strictly intended for educational purposes with the intent of offering more flexibility to test this POC in a home lab or professional setting. USING THIS AGAINST ANY TARGET WITHOUT PERMISSION IS HIGHLY UNETHICAL AND ILLEGAL. I am not reponsible for any use or misuse of this tool. **
-
--Now includes a tool to check if servers are HTTP/2 capable.-
-
 Install the required prerequisites:
 ```shell
 pip install h2
@@ -25,6 +27,10 @@ Execute the Proof of Concept:
 cd cflood
 python3 start.py
 ```
+
+![IMG_9380](https://github.com/user-attachments/assets/db8854b6-9a19-4556-8a5f-b651758ff2b4)
+![IMG_9379](https://github.com/user-attachments/assets/24085cef-e437-4e65-b2e5-242bfb603148)
+
 
 ## Affected CVEs
 - CVE-2024-27983
