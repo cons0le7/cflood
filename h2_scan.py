@@ -2,11 +2,29 @@ import socket
 import base64
 import time
 import ssl
+import sys
 
 def color_red(text):
     red = "\033[31m"
     reset = "\033[0m"
     return f"{red}{text}{reset}"
+    
+def again(): 
+    end_choice = int(input(color_red("""
+    
+    1. Scan more. 
+    2. Open cflood. 
+    3. Exit. 
+    """)))
+    if end_choice == 1: 
+        scan_menu() 
+    elif end_choice == 2: 
+        import cflood 
+    elif end_choice == 3: 
+        sys.exit() 
+    else: 
+        print(color_red("Invalid input."))
+        
 
 def h2_req(host, port):
     h2_payload = b'\x00'
@@ -76,6 +94,8 @@ Response from h2 upgrade request:
 Response from h2 formatted packet: 
 """))
                 print(ver_response)
+                again()
+                
             else:
                 ver_request = check_ver(host, port)
                 sock.sendall(ver_request.encode('utf-8'))
@@ -85,12 +105,15 @@ Response from h2 formatted packet:
 Response from h2 formatted packet: 
 """))
                 print(ver_response)
+                again()
 
         except socket.timeout:
             print(color_red("Request timed out."))
         except Exception as e:
             print(color_red(f"An error occurred: {e}"))
-print(color_red("""
+
+def scan_menu(): 
+    print(color_red("""
  __   __  _______         _______  _______  _______  __    _ 
 |  | |  ||       |       |       ||       ||   _   ||  |  | |
 |  |_|  ||____   | ____  |  _____||       ||  |_|  ||   |_| |
@@ -110,32 +133,33 @@ server response, the server does support HTTP/2. This may not
 always be 100% accurate but in many cases it will help to 
 identify HTTP/2 capable servers.
 """))
-connection_type = input(color_red("""Choose connection type: 
+    connection_type = input(color_red("""Choose connection type: 
 1. HTTP
 2. HTTPS 
 """)).strip()
-url = input(color_red("Enter target URL (without http:// or https://): ")).strip()
+    url = input(color_red("Enter target URL (without http:// or https://): ")).strip()
 
-if connection_type == '1':
-    port = 80
-    port_input = input(color_red("Enter target port (or press Enter to use default 80 for http): ")).strip()
-    if port_input:
-        try:
-            port = int(port_input)
-        except ValueError:
-            print(color_red("Invalid port number. Using default http port."))
-elif connection_type == '2':
-    port = 443
-    port_input = input(color_red("Enter target port (or press Enter to use default 443 for https): ")).strip()
-    if port_input:
-        try:
-            port = int(port_input)
-        except ValueError:
-            print(color_red("Invalid port number. Using default port."))
-else:
-    print(color_red("Invalid connection type. Please choose '1' for http or '2' for https."))
-    exit(1)
+    if connection_type == '1':
+        port = 80
+        port_input = input(color_red("Enter target port (or press Enter to use default 80 for http): ")).strip()
+        if port_input:
+            try:
+                port = int(port_input)
+            except ValueError:
+                print(color_red("Invalid port number. Using default http port."))
+    elif connection_type == '2':
+        port = 443
+        port_input = input(color_red("Enter target port (or press Enter to use default 443 for https): ")).strip()
+        if port_input:
+            try:
+                port = int(port_input)
+            except ValueError:
+                print(color_red("Invalid port number. Using default port."))
+    else:
+        print(color_red("Invalid connection type. Please choose '1' for http or '2' for https."))
+        exit(1)
 
-timeout = int(input(color_red("Enter the timeout in seconds: ")))
+    timeout = int(input(color_red("Enter the timeout in seconds: ")))
 
-check_h2(url, port, timeout, connection_type)
+    check_h2(url, port, timeout, connection_type)
+scan_menu()
